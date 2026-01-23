@@ -111,7 +111,8 @@
       background-position: center 65%;
 
       /* Subtle grade to feel cinematic */
-      filter: saturate(1.05) contrast(1.06);
+      filter: brightness(1.4) saturate(1.1) contrast(1.05);
+
       opacity: .98;
       transform: scale(1.02);
       pointer-events:none;
@@ -124,10 +125,11 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg,
-          rgba(6,7,10,.94) 0%,
-          rgba(6,7,10,.72) 46%,
-          rgba(6,7,10,.18) 100%),
+linear-gradient(90deg,
+  rgba(6,7,10,.88) 0%,
+  rgba(6,7,10,.60) 46%,
+  rgba(6,7,10,.10) 100%),
+
         radial-gradient(900px 600px at 50% 30%, rgba(0,0,0,.20), rgba(0,0,0,.78)),
         linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.78));
       pointer-events:none;
