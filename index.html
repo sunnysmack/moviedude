@@ -5,194 +5,219 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blue Hawk BTC</title>
   <style>
-    :root {
-      --bg: #0b0f17;
-      --panel: #0f141c;
-      --line: rgba(255,255,255,0.08);
-      --text-main: #f2f4f8;
-      --text-muted: #b0b6bf;
-      --blue: #2f80ed;
-      --orange: #f2994a;
-      --accent: var(--orange);
+    :root{
+      --bg:#0b0f17;
+      --panel:#0f141c;
+      --line:rgba(255,255,255,0.08);
+      --text-main:#f2f4f8;
+      --text-muted:#b0b6bf;
+      --orange:#f2994a;
+      --accent:var(--orange);
     }
 
-    * { box-sizing: border-box; }
+    *{ box-sizing:border-box; }
+    html,body{ margin:0; padding:0; }
 
-    body {
-      margin: 0;
+    body{
       font-family: Inter, Helvetica, Arial, sans-serif;
-      background-color: var(--bg);
+      background: var(--bg);
       color: var(--text-main);
     }
 
-    header {
+    /* Header */
+    header{
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 6%;
+      top:0; left:0;
+      width:100%;
+      height:80px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 6%;
       background: linear-gradient(to bottom, rgba(11,15,23,0.95), rgba(11,15,23,0.85));
       backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--line);
-      z-index: 10;
+      border-bottom:1px solid var(--line);
+      z-index:10;
     }
 
-    header .logo {
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      font-size: 0.85rem;
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:14px;
     }
 
-    header .nav-cta {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      border: 1px solid var(--accent);
-      padding: 10px 18px;
-      text-decoration: none;
+    .logo img{
+      height:36px;
+      width:auto;
+      display:block;
     }
 
-    section {
-      padding: 140px 8%;
+    .logo .wordmark{
+      font-weight:800;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      font-size:0.95rem;
+      line-height:1;
+      color: var(--text-main);
+      user-select:none;
     }
 
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      align-items: center;
-      gap: 80px;
-      padding-top: 160px;
-    }
-
-    h1 {
-      font-size: 3.4rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-    }
-
-    h2 {
-      font-size: 2.1rem;
-      font-weight: 500;
-      margin-bottom: 28px;
-    }
-
-    p {
-      max-width: 640px;
-      line-height: 1.7;
-      color: var(--text-muted);
-    }
-
-    .cta {
-      display: inline-block;
-      margin-top: 44px;
-      padding: 16px 36px;
+    header .nav-cta{
+      font-size:0.75rem;
+      text-transform:uppercase;
+      letter-spacing:0.1em;
+      color:var(--accent);
+      border:1px solid var(--accent);
+      padding:10px 18px;
+      text-decoration:none;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
       border-radius: 4px;
-      background: linear-gradient(135deg, var(--orange), #ffb266);
-      color: #0b0f17;
-      text-decoration: none;
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 600;
-      box-shadow: 0 10px 30px rgba(242,153,74,0.35);
-      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
     }
 
-    .cta:hover {
+    header .nav-cta:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(242,153,74,0.18);
+      background: rgba(242,153,74,0.06);
+    }
+
+    /* Sections */
+    section{ padding:140px 8%; }
+
+    .hero{
+      min-height:100vh;
+      display:grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items:center;
+      gap:80px;
+      padding-top:160px;
+    }
+
+    h1{
+      font-size:3.4rem;
+      font-weight:600;
+      letter-spacing:-0.02em;
+      margin:0 0 24px 0;
+    }
+
+    h2{
+      font-size:2.1rem;
+      font-weight:500;
+      margin:0 0 28px 0;
+    }
+
+    p{
+      max-width:640px;
+      line-height:1.7;
+      color:var(--text-muted);
+      margin: 0 0 14px 0;
+    }
+
+    .cta{
+      display:inline-block;
+      margin-top:44px;
+      padding:16px 36px;
+      border-radius:4px;
+      background: linear-gradient(135deg, var(--orange), #ffb266);
+      color:#0b0f17;
+      text-decoration:none;
+      font-size:0.75rem;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      font-weight:700;
+      box-shadow: 0 10px 30px rgba(242,153,74,0.35);
+      transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+    }
+
+    .cta:hover{
       transform: translateY(-2px);
       box-shadow: 0 14px 40px rgba(242,153,74,0.45);
       filter: brightness(1.05);
     }
-    }
 
-    .hero-visual {
-      height: 460px;
-      background:
-        linear-gradient(180deg, rgba(11,15,23,0.2), rgba(11,15,23,0.9)),
-        url('/mnt/data/7683C5EC-3DE6-4C0A-AD95-BBC9DDF62BFD.png');
-      background-size: cover;
-      background-position: center;
-      border-radius: 6px;
+    .hero-visual{
+      height:460px;
+      border-radius:6px;
+      border:1px solid var(--line);
       box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+      background:
+        linear-gradient(180deg, rgba(11,15,23,0.20), rgba(11,15,23,0.90)),
+        url("assets/hero-field-site.jpg");
+      background-size:cover;
+      background-position:center;
     }
 
-    .divider {
-      height: 1px;
-      background: var(--line);
-      margin: 0;
+    .divider{
+      height:1px;
+      background:var(--line);
+      margin:0;
     }
 
-    .pillars {
-      display: grid;
+    .panel{ background:var(--panel); }
+
+    .pillars{
+      display:grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 48px;
+      gap:48px;
+      margin-top: 24px;
     }
 
-    .pillar {
-      padding-top: 20px;
-      border-top: 1px solid var(--line);
-      font-size: 0.95rem;
-      color: #d0d3d8;
+    .pillar{
+      padding-top:20px;
+      border-top:1px solid var(--line);
+      font-size:0.95rem;
+      color:#d0d3d8;
     }
 
-    .panel {
-      background: var(--panel);
-    }
-
-    .image-grid {
-      display: grid;
+    .image-grid{
+      display:grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      margin-top: 60px;
+      gap:40px;
+      margin-top:60px;
     }
 
-    .image-tile {
-      height: 260px;
-      border-radius: 6px;
-      border: 1px solid var(--line);
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
-      transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+    .image-tile{
+      height:260px;
+      border-radius:6px;
+      border:1px solid var(--line);
+      background-size:cover;
+      background-position:center;
+      box-shadow:0 20px 60px rgba(0,0,0,0.45);
+      transition: transform .4s ease, box-shadow .4s ease, filter .4s ease;
       filter: brightness(0.85);
     }
 
-    .image-tile:hover {
+    .image-tile:hover{
       transform: translateY(-4px);
-      box-shadow: 0 30px 90px rgba(0,0,0,0.65);
+      box-shadow:0 30px 90px rgba(0,0,0,0.65);
       filter: brightness(1);
     }
 
-    footer {
-      padding: 80px 8%;
-      font-size: 0.8rem;
-      color: #6b7280;
-      border-top: 1px solid var(--line);
+    footer{
+      padding:80px 8%;
+      font-size:0.8rem;
+      color:#6b7280;
+      border-top:1px solid var(--line);
     }
 
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-      .pillars {
-        grid-template-columns: 1fr 1fr;
-      }
+    @media (max-width: 900px){
+      section{ padding:120px 7%; }
+      .hero{ grid-template-columns: 1fr; gap: 44px; }
+      h1{ font-size: 2.6rem; }
+      .pillars{ grid-template-columns: 1fr 1fr; }
+      .image-grid{ grid-template-columns: 1fr; }
+      header{ padding: 0 5%; }
     }
   </style>
 </head>
+
 <body>
 
   <header>
-    <div class="logo"><img src="assets/blue-hawk-icon.png" alt="Blue Hawk" />
+    <div class="logo">
+      <img src="assets/blue-hawk-icon.png" alt="Blue Hawk icon" />
+      <span class="wordmark">BLUE HAWK</span>
+    </div>
 
-</div>
     <a href="#" class="nav-cta">Schedule Call</a>
   </header>
 
@@ -200,10 +225,15 @@
   <section class="hero">
     <div>
       <h1>Turn Flared Gas Into Revenue.</h1>
-      <p>Blue Hawk deploys on-site infrastructure that converts stranded natural gas into productive economic output — using Bitcoin mining as an energy offtake.</p>
+      <p>
+        Blue Hawk deploys on-site infrastructure that converts stranded natural gas into productive economic output —
+        using Bitcoin mining as an energy offtake.
+      </p>
       <a href="#" class="cta">Book a Confidential Call</a>
     </div>
-    <div class="hero-visual"></div>
+
+    <!-- Replace hero-field-site.jpg with your real hero image -->
+    <div class="hero-visual" aria-label="Field deployment site image"></div>
   </section>
 
   <div class="divider"></div>
@@ -236,12 +266,18 @@
     <p>Blue Hawk systems are designed to live in the field — quiet, modular, and engineered for remote environments where reliability matters more than flash.</p>
 
     <div class="image-grid">
-      <div class="image-tile" style="background-image: linear-gradient(180deg, rgba(11,15,23,0.3), rgba(11,15,23,0.85)), url('/mnt/data/81bb56c4-e42a-454d-b129-f2708147f7d5.heic');"></div>
-      <div class="image-tile" style="background-image: linear-gradient(180deg, rgba(11,15,23,0.3), rgba(11,15,23,0.85)), url('/mnt/data/81bb56c4-e42a-454d-b129-f2708147f7d5.heic');"></div>
-      <div class="image-tile" style="background-image: linear-gradient(180deg, rgba(11,15,23,0.3), rgba(11,15,23,0.85)), url('/mnt/data/81bb56c4-e42a-454d-b129-f2708147f7d5.heic');"></div>
-    </div>
-      <div style="height:260px; background: linear-gradient(180deg, rgba(11,15,23,0.3), rgba(11,15,23,0.85)), url('/mnt/data/81bb56c4-e42a-454d-b129-f2708147f7d5.heic'); background-size:cover; background-position:center; border-radius:6px; border:1px solid var(--line);"></div>
-      <div style="height:260px; background: linear-gradient(180deg, rgba(11,15,23,0.3), rgba(11,15,23,0.85)), url('/mnt/data/81bb56c4-e42a-454d-b129-f2708147f7d5.heic'); background-size:cover; background-position:center; border-radius:6px; border:1px solid var(--line);"></div>
+      <!-- Replace these with real images in /assets -->
+      <div class="image-tile" style="background-image:
+        linear-gradient(180deg, rgba(11,15,23,0.30), rgba(11,15,23,0.85)),
+        url('assets/equipment-1.jpg');"></div>
+
+      <div class="image-tile" style="background-image:
+        linear-gradient(180deg, rgba(11,15,23,0.30), rgba(11,15,23,0.85)),
+        url('assets/equipment-2.jpg');"></div>
+
+      <div class="image-tile" style="background-image:
+        linear-gradient(180deg, rgba(11,15,23,0.30), rgba(11,15,23,0.85)),
+        url('assets/equipment-3.jpg');"></div>
     </div>
   </section>
 
