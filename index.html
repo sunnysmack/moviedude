@@ -20,7 +20,7 @@
       --r: 16px;
       --shadow: 0 18px 60px rgba(0,0,0,.55);
 
-      /* ✅ HERO BG = flare strip (full-bleed) */
+      /* ✅ HERO BG = your horizontal flare image */
       --hero-image: url("assets/flare.png");
     }
 
@@ -98,7 +98,7 @@
         linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.80));
     }
 
-    /* ✅ Full-bleed flare image */
+    /* ✅ Flare image + subtle heat shimmer + micro flicker */
     .hero::before{
       content:"";
       position:absolute;
@@ -106,32 +106,43 @@
       background-image: var(--hero-image);
       background-size: cover;
       background-repeat: no-repeat;
-
-      /* Key: keep it feeling "horizontal", prioritize horizon/ground */
       background-position: center 65%;
 
-      /* Subtle grade to feel cinematic */
+      /* ~40% brighter + slightly richer */
       filter: brightness(1.4) saturate(1.1) contrast(1.05);
 
       opacity: .98;
-      transform: scale(1.02);
+      transform: scale(1.03);
       pointer-events:none;
       z-index: 0;
+
+      animation: heatShimmer 7.5s ease-in-out infinite,
+                 microFlicker 5.8s ease-in-out infinite;
+      will-change: transform, filter;
     }
 
-    /* ✅ Text legibility overlay like the comp (dark left fade) */
+    /* ✅ Legibility overlay + dusk→night falloff */
     .hero::after{
       content:"";
       position:absolute;
       inset:0;
       background:
-linear-gradient(90deg,
-  rgba(6,7,10,.88) 0%,
-  rgba(6,7,10,.60) 46%,
-  rgba(6,7,10,.10) 100%),
+        /* left-side dark fade for text readability */
+        linear-gradient(90deg,
+          rgba(6,7,10,.88) 0%,
+          rgba(6,7,10,.60) 46%,
+          rgba(6,7,10,.10) 100%),
 
-        radial-gradient(900px 600px at 50% 30%, rgba(0,0,0,.20), rgba(0,0,0,.78)),
-        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.78));
+        /* slight vignette */
+        radial-gradient(900px 600px at 50% 30%,
+          rgba(0,0,0,.18),
+          rgba(0,0,0,.78)),
+
+        /* dusk → night toward bottom */
+        linear-gradient(180deg,
+          rgba(0,0,0,.00) 0%,
+          rgba(0,0,0,.10) 45%,
+          rgba(6,7,10,.62) 100%);
       pointer-events:none;
       z-index: 1;
     }
@@ -252,7 +263,7 @@ linear-gradient(90deg,
       max-width: 860px;
     }
 
-    /* 4 Cards row */
+    /* 4 Cards row (Assessment/Deployment/Operation/Results) */
     .steps{
       margin-top: 26px;
       display:grid;
@@ -313,6 +324,25 @@ linear-gradient(90deg,
       padding: 22px 0 34px;
       color: rgba(255,255,255,.42);
       font-size: 12px;
+    }
+
+    /* ===== Animations ===== */
+    @keyframes heatShimmer{
+      0%   { transform: scale(1.03) translate3d(0,0,0) skewX(0deg); }
+      20%  { transform: scale(1.035) translate3d(-2px,1px,0) skewX(-0.08deg); }
+      50%  { transform: scale(1.03) translate3d(2px,-1px,0) skewX(0.10deg); }
+      80%  { transform: scale(1.035) translate3d(-1px,-2px,0) skewX(-0.06deg); }
+      100% { transform: scale(1.03) translate3d(0,0,0) skewX(0deg); }
+    }
+
+    @keyframes microFlicker{
+      0%, 100% { filter: brightness(1.38) saturate(1.10) contrast(1.05); }
+      35%      { filter: brightness(1.42) saturate(1.12) contrast(1.05); }
+      60%      { filter: brightness(1.39) saturate(1.11) contrast(1.05); }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .hero::before{ animation: none; }
     }
 
     /* ===== Responsive ===== */
