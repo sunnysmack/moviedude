@@ -20,8 +20,8 @@
       --r: 16px;
       --shadow: 0 18px 60px rgba(0,0,0,.55);
 
-      /* HERO IMAGE PATH (upload to /assets) */
-      --hero-image: url("assets/hero-flare.jpg");
+      /* FULL-WIDTH FLARE STRIP IMAGE (upload flare.png into /assets) */
+      --flare-image: url("assets/flare.png");
     }
 
     *{ box-sizing: border-box; }
@@ -86,39 +86,24 @@
       color: #1a1206;
     }
 
-    /* ===== Hero (full-bleed image + overlays like comp) ===== */
+    /* ===== Hero (text-first, no background photo) ===== */
     .hero{
       position: relative;
-      min-height: 92vh;
-      padding: 140px 0 90px;
+      min-height: 68vh;
+      padding: 140px 0 60px;
       overflow: hidden;
       background:
-        /* fallback gradients if image missing */
-        radial-gradient(1000px 600px at 78% 35%, rgba(255,150,0,.30), rgba(0,0,0,0) 55%),
-        radial-gradient(900px 600px at 25% 55%, rgba(60,120,255,.10), rgba(0,0,0,0) 60%),
-        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.70));
-    }
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image: var(--hero-image);
-      background-size: cover;
-      background-position: center;
-      filter: saturate(1.05) contrast(1.05);
-      opacity: .95;
-      transform: scale(1.02);
-      pointer-events:none;
-      z-index: 0;
+        radial-gradient(1000px 600px at 78% 35%, rgba(255,150,0,.18), rgba(0,0,0,0) 55%),
+        radial-gradient(900px 600px at 25% 55%, rgba(60,120,255,.08), rgba(0,0,0,0) 60%),
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.78));
     }
     .hero::after{
       content:"";
       position:absolute;
       inset:0;
-      /* left-side dark fade + overall vignette */
       background:
-        linear-gradient(90deg, rgba(6,7,10,.92) 0%, rgba(6,7,10,.66) 46%, rgba(6,7,10,.20) 100%),
-        radial-gradient(900px 600px at 50% 30%, rgba(0,0,0,.25), rgba(0,0,0,.80));
+        linear-gradient(90deg, rgba(6,7,10,.92) 0%, rgba(6,7,10,.72) 55%, rgba(6,7,10,.30) 100%),
+        radial-gradient(900px 600px at 50% 30%, rgba(0,0,0,.25), rgba(0,0,0,.85));
       pointer-events:none;
       z-index: 1;
     }
@@ -149,6 +134,29 @@
       gap: 12px;
       flex-wrap: wrap;
       margin-top: 10px;
+    }
+
+    /* ===== NEW: Full-width flare image strip under hero text ===== */
+    .flareStrip{
+      position: relative;
+      width: 100%;
+      height: 380px;              /* adjust to taste */
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      background-image: var(--flare-image);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .flareStrip::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(6,7,10,.85), rgba(6,7,10,.15) 45%, rgba(6,7,10,.88)),
+        radial-gradient(900px 500px at 55% 40%, rgba(0,0,0,.10), rgba(0,0,0,.70));
+      pointer-events:none;
     }
 
     /* ===== Sections like comp ===== */
@@ -312,7 +320,8 @@
       nav{ display:none; }
       h1{ font-size: 44px; }
       .brand img{ height: 48px; }
-      .hero{ padding: 120px 0 70px; }
+      .hero{ padding: 120px 0 52px; }
+      .flareStrip{ height: 300px; }
       .steps{ grid-template-columns: 1fr; }
       .talk h2{ font-size: 40px; }
     }
@@ -359,6 +368,9 @@
       </div>
     </div>
   </section>
+
+  <!-- NEW: full-width flare background strip (uses assets/flare.png) -->
+  <section class="flareStrip" aria-hidden="true"></section>
 
   <section id="what" class="section darkFade">
     <div class="wrap">
