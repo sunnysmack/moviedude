@@ -14,13 +14,14 @@
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.70);
       --muted2: rgba(255,255,255,.55);
-      --accent: #F3A13A;
+      --accent: #F3A13A;   /* button orange */
       --accent2:#FFBE63;
       --max: 1120px;
       --r: 16px;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
 
-      /* Flare strip image */
-      --flare-image: url("assets/flare.png");
+      /* ✅ HERO BG = flare strip (full-bleed) */
+      --hero-image: url("assets/flare.png");
     }
 
     *{ box-sizing: border-box; }
@@ -33,7 +34,7 @@
     a{ color: inherit; text-decoration:none; }
     .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 28px; }
 
-    /* ===== Header ===== */
+    /* ===== Header (like comp) ===== */
     header{
       position: absolute;
       top: 0; left: 0; right: 0;
@@ -85,25 +86,50 @@
       color: #1a1206;
     }
 
-    /* ===== Hero ===== */
+    /* ===== Hero (FULL-BLEED flare background like comp) ===== */
     .hero{
       position: relative;
+      min-height: 92vh;
       padding: 140px 0 90px;
       overflow: hidden;
       background:
-        radial-gradient(1000px 600px at 78% 35%, rgba(255,150,0,.18), rgba(0,0,0,0) 55%),
+        radial-gradient(1000px 600px at 78% 35%, rgba(255,150,0,.24), rgba(0,0,0,0) 55%),
         radial-gradient(900px 600px at 25% 55%, rgba(60,120,255,.08), rgba(0,0,0,0) 60%),
-        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.78));
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.80));
     }
 
-    /* hero overlay */
+    /* ✅ Full-bleed flare image */
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image: var(--hero-image);
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      /* Key: keep it feeling "horizontal", prioritize horizon/ground */
+      background-position: center 65%;
+
+      /* Subtle grade to feel cinematic */
+      filter: saturate(1.05) contrast(1.06);
+      opacity: .98;
+      transform: scale(1.02);
+      pointer-events:none;
+      z-index: 0;
+    }
+
+    /* ✅ Text legibility overlay like the comp (dark left fade) */
     .hero::after{
       content:"";
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg, rgba(6,7,10,.92) 0%, rgba(6,7,10,.72) 55%, rgba(6,7,10,.30) 100%),
-        radial-gradient(900px 600px at 50% 30%, rgba(0,0,0,.25), rgba(0,0,0,.85));
+        linear-gradient(90deg,
+          rgba(6,7,10,.94) 0%,
+          rgba(6,7,10,.72) 46%,
+          rgba(6,7,10,.18) 100%),
+        radial-gradient(900px 600px at 50% 30%, rgba(0,0,0,.20), rgba(0,0,0,.78)),
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.78));
       pointer-events:none;
       z-index: 1;
     }
@@ -113,7 +139,7 @@
       z-index: 2;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 18px;
+      gap: 22px;
     }
 
     h1{
@@ -122,38 +148,8 @@
       line-height: 1.02;
       letter-spacing: -0.04em;
     }
-
-    /* ✅ Flare strip directly under headline, full width */
-    .flareUnderHeadline{
-      position: relative;
-      height: 260px; /* tweak */
-      width: 100vw;  /* full bleed */
-      margin-left: calc(50% - 50vw); /* break out of .wrap */
-      margin-right: calc(50% - 50vw);
-      border-top: 1px solid rgba(255,255,255,.06);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-      background-image: var(--flare-image);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      overflow: hidden;
-      z-index: 2;
-      border-radius: 0;
-    }
-
-    /* vignette + blend */
-    .flareUnderHeadline::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, rgba(6,7,10,.92), rgba(6,7,10,.12) 45%, rgba(6,7,10,.92)),
-        radial-gradient(900px 450px at 55% 40%, rgba(0,0,0,.10), rgba(0,0,0,.72));
-      pointer-events:none;
-    }
-
     .lead{
-      margin: 2px 0 14px;
+      margin: 10px 0 22px;
       max-width: 680px;
       color: rgba(255,255,255,.72);
       font-size: 18px;
@@ -163,10 +159,10 @@
       display:flex;
       gap: 12px;
       flex-wrap: wrap;
-      margin-top: 6px;
+      margin-top: 10px;
     }
 
-    /* ===== Sections ===== */
+    /* ===== Sections like comp ===== */
     .section{
       padding: 72px 0;
       position: relative;
@@ -193,6 +189,7 @@
       font-size: 15px;
     }
 
+    /* What We Do split */
     .whatGrid{
       display:grid;
       grid-template-columns: 1.05fr .95fr;
@@ -240,6 +237,20 @@
       line-height: 1;
     }
 
+    /* Why Operators block */
+    .whyBlock{
+      margin-top: 30px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .whyCopy{
+      color: rgba(255,255,255,.62);
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 860px;
+    }
+
+    /* 4 Cards row */
     .steps{
       margin-top: 26px;
       display:grid;
@@ -281,6 +292,7 @@
       user-select:none;
     }
 
+    /* Let’s Talk */
     .talk{
       padding: 84px 0 96px;
       text-align:center;
@@ -306,7 +318,6 @@
       h1{ font-size: 58px; }
       .whatGrid{ grid-template-columns: 1fr; }
       .steps{ grid-template-columns: 1fr 1fr; }
-      .flareUnderHeadline{ height: 230px; }
     }
     @media (max-width: 640px){
       nav{ display:none; }
@@ -315,7 +326,6 @@
       .hero{ padding: 120px 0 70px; }
       .steps{ grid-template-columns: 1fr; }
       .talk h2{ font-size: 40px; }
-      .flareUnderHeadline{ height: 190px; }
     }
   </style>
 </head>
@@ -350,9 +360,6 @@
       <div class="heroInner">
         <h1>We Turn Wasted<br>Gas Into Revenue.</h1>
 
-        <!-- ✅ flare band directly under headline -->
-        <div class="flareUnderHeadline" aria-hidden="true"></div>
-
         <p class="lead">
           Blue Hawk deploys on-site infrastructure that converts flared natural gas into usable economic value.
         </p>
@@ -385,9 +392,9 @@
         </ul>
       </div>
 
-      <div class="whyBlock" id="why" style="margin-top:30px; padding-top:28px; border-top:1px solid rgba(255,255,255,.08);">
+      <div class="whyBlock" id="why">
         <h2 style="margin-top: 0;">Why Operators Work With Blue Hawk</h2>
-        <p class="whyCopy" style="color:rgba(255,255,255,.62); font-size:15px; line-height:1.7; max-width:860px;">
+        <p class="whyCopy">
           Blue Hawk is built for serious operators. We focus on clear outcomes, professional execution,
           and protecting competitive advantage. Bitcoin is the settlement rail — the infrastructure is the product.
         </p>
