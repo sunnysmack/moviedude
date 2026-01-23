@@ -22,7 +22,7 @@
       --hero-image: url("assets/flare.png");
     }
 
-    *{ box-sizing:border-box; }
+    *{ box-sizing: border-box; }
     html,body{ margin:0; padding:0; }
     body{
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -34,36 +34,57 @@
     .wrap{ max-width:var(--max); margin:0 auto; padding:0 28px; }
     :target{ scroll-margin-top:110px; }
 
-    header{ position:absolute; top:0; left:0; right:0; z-index:10; }
+    /* Header */
+    header{
+      position:absolute;
+      top:0; left:0; right:0;
+      z-index:10;
+    }
     .topbar{
-      display:flex; align-items:center; justify-content:space-between;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
       padding:22px 0;
     }
-
-    .brand img{ height:56px; }
-
-    nav{ display:flex; gap:22px; font-size:14px; color:rgba(255,255,255,.78); }
+    .brand img{
+      height:56px;
+      display:block;
+    }
+    nav{
+      display:flex;
+      gap:22px;
+      font-size:14px;
+      color:rgba(255,255,255,.78);
+    }
     nav a:hover{ color:#fff; }
 
     .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       padding:12px 18px;
       border-radius:10px;
       font-weight:800;
       font-size:13px;
+      border:1px solid rgba(0,0,0,.25);
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
       background:linear-gradient(180deg,var(--accent2),var(--accent));
       color:#1a1206;
-      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      white-space:nowrap;
     }
 
-    /* HERO */
+    /* Hero */
     .hero{
       position:relative;
       min-height:92vh;
       padding:140px 0 0;
-      background:linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.80));
       overflow:hidden;
+      background:
+        radial-gradient(1000px 600px at 78% 35%, rgba(255,150,0,.24), transparent 55%),
+        radial-gradient(900px 600px at 25% 55%, rgba(60,120,255,.08), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.80));
     }
-
     .hero::before{
       content:"";
       position:absolute;
@@ -72,9 +93,10 @@
       background-size:cover;
       background-position:center 65%;
       filter:brightness(1.4) saturate(1.1);
+      transform:scale(1.03);
+      pointer-events:none;
       animation:heatShimmer 7.5s ease-in-out infinite;
     }
-
     .hero::after{
       content:"";
       position:absolute;
@@ -83,31 +105,52 @@
         rgba(6,7,10,.88),
         rgba(6,7,10,.10));
     }
-
-    .heroInner{ position:relative; z-index:3; }
+    .heroInner{
+      position:relative;
+      z-index:3;
+      padding-bottom:64px;
+    }
 
     h1{
+      margin:0;
       font-size:76px;
       line-height:1.02;
       letter-spacing:-0.04em;
     }
-
     .lead{
+      margin:10px 0 12px;
       max-width:680px;
       font-size:18px;
+      line-height:1.65;
       color:rgba(255,255,255,.72);
     }
 
-    .section{ padding:52px 0; }
+    /* Sections */
+    .section{
+      padding:52px 0;
+      position:relative;
+      z-index:2;
+    }
+    .section.darkFade{
+      background:
+        radial-gradient(900px 700px at 70% 40%, rgba(60,120,255,.08), transparent 60%),
+        radial-gradient(900px 700px at 20% 55%, rgba(255,150,0,.08), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.55));
+      border-top:1px solid rgba(255,255,255,.07);
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
 
-    /* WHAT / SOLUTION unchanged for brevity */
+    h2{
+      margin:0 0 12px;
+      font-size:34px;
+      letter-spacing:-0.02em;
+    }
 
-    /* === LET’S TALK SECTION === */
+    /* Let’s Talk */
     .talk{
       padding:84px 0 96px;
       text-align:center;
     }
-
     .talk h2{
       font-size:52px;
       margin-bottom:8px;
@@ -132,12 +175,6 @@
       transform:translateY(0);
     }
 
-    @media (prefers-color-scheme: dark){
-      .letsTalkLogo{
-        filter:brightness(1.15) saturate(1.05);
-      }
-    }
-
     footer{
       text-align:center;
       padding:22px 0 34px;
@@ -150,37 +187,47 @@
       50%{ transform:scale(1.035); }
       100%{ transform:scale(1.03); }
     }
+
+    @media (max-width:640px){
+      nav{ display:none; }
+      h1{ font-size:44px; }
+      .talk h2{ font-size:40px; }
+    }
   </style>
 </head>
 
 <body>
 
 <header>
-  <div class="wrap topbar">
-    <a class="brand" href="#">
-      <img src="assets/bluehawklogo_cropped_header.png" alt="Blue Hawk">
-    </a>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#what">About</a>
-      <a href="#solution">Solutions</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="btn" href="#contact">Book a Call</a>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="#">
+        <img src="assets/bluehawklogo_cropped_header.png" alt="Blue Hawk">
+      </a>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#what">About</a>
+        <a href="#solution">Solutions</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn" href="#contact">Book a Call</a>
+    </div>
   </div>
 </header>
 
 <section id="home" class="hero">
-  <div class="wrap heroInner">
-    <h1>We Turn Wasted<br>Gas Into Revenue.</h1>
-    <p class="lead">
-      Blue Hawk deploys on-site infrastructure that converts flared natural gas into usable economic value.
-    </p>
-    <a class="btn" href="#contact">Book a Call</a>
+  <div class="wrap">
+    <div class="heroInner">
+      <h1>We Turn Wasted<br>Gas Into Revenue.</h1>
+      <p class="lead">
+        Blue Hawk deploys on-site infrastructure that converts flared natural gas into usable economic value.
+      </p>
+      <a class="btn" href="#contact">Book a Call</a>
+    </div>
   </div>
 </section>
 
-<section id="contact" class="talk section">
+<section id="contact" class="talk section darkFade">
   <div class="wrap">
 
     <div class="letsTalkBlock">
