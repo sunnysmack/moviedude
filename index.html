@@ -388,23 +388,27 @@
     }
 
     /* ✅ Logo above “Let’s Talk” — width matches text, smaller + fade-in */
-    .letsTalkBlock{
-      display: inline-block; /* shrink-wrap to text width */
-      text-align: center;
-    }
-    .letsTalkLogo{
-      display:block;
-      width: 70%;            /* ✅ smaller than before (was 90%) */
-      max-width: 100%;
-      margin: 0 auto 14px;
-      opacity: 0;
-      transform: translateY(6px);
-      transition: opacity .9s ease, transform .9s ease;
-    }
-    .letsTalkLogo.is-visible{
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* Bottom “Let’s Talk” logo */
+.letsTalkBlock{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.letsTalkLogo{
+  display: block;
+  width: clamp(180px, 32vw, 320px);
+  height: auto;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .9s ease, transform .9s ease;
+}
+
+.letsTalkLogo.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
     footer{
       text-align:center;
