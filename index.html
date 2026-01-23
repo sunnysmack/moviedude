@@ -1,46 +1,197 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blue Hawk BTC</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blue Hawk BTC</title>
 
-  <style>
-    /* RESET — remove all browser weirdness */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <style>
+      /* Basic reset */
+      * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      background: #000;
-      color: #fff;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    }
+      body {
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: #0b0f14;
+        color: #eaf2ff;
+        min-height: 100vh;
+      }
 
-    header {
-      width: 100%;
-      padding: 40px;
-      display: flex;
-      align-items: center;
-    }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 28px 32px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
 
-    /* THIS IS THE IMPORTANT PART */
-    .logo img {
-      width: 320px;       /* ← CHANGE THIS SIZE */
-      max-width: none;    /* ← KILLS ALL HIDDEN CONSTRAINTS */
-      height: auto;
-      display: block;
-    }
-  </style>
-</head>
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
 
-<body>
-  <header>
-    <div class="logo">
-      <img src="assets/logo.png" alt="Blue Hawk BTC Logo" />
-    </div>
-  </header>
-</body>
+      /* ✅ Logo will NOT be small unless you set it small here */
+      .brand img {
+        width: 320px;     /* change this number if you want bigger/smaller */
+        height: auto;
+        max-width: none;  /* kills silent max-width constraints */
+        display: block;
+      }
+
+      nav a {
+        color: rgba(234,242,255,0.8);
+        text-decoration: none;
+        margin-left: 18px;
+        font-size: 14px;
+      }
+      nav a:hover { color: #ffffff; }
+
+      main {
+        padding: 64px 32px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 44px;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        margin-bottom: 14px;
+      }
+
+      p.lede {
+        font-size: 18px;
+        color: rgba(234,242,255,0.78);
+        max-width: 70ch;
+        margin-bottom: 28px;
+      }
+
+      .cta-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 16px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .btn.primary {
+        background: #2d7dff;
+        color: #081019;
+      }
+      .btn.secondary {
+        border: 1px solid rgba(255,255,255,0.14);
+        color: #eaf2ff;
+        background: rgba(255,255,255,0.04);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 48px;
+      }
+      .card {
+        border: 1px solid rgba(255,255,255,0.10);
+        background: rgba(255,255,255,0.03);
+        border-radius: 14px;
+        padding: 18px;
+      }
+      .card h3 { font-size: 16px; margin-bottom: 8px; }
+      .card p { color: rgba(234,242,255,0.72); font-size: 14px; line-height: 1.5; }
+
+      footer {
+        padding: 22px 32px;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        color: rgba(234,242,255,0.6);
+        font-size: 13px;
+      }
+
+      @media (max-width: 860px) {
+        .brand img { width: 240px; }
+        .grid { grid-template-columns: 1fr; }
+        h1 { font-size: 36px; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="brand">
+        <!-- ✅ logo is in /assets/ -->
+        <img src="assets/bluehawklogo.png" alt="Blue Hawk BTC Logo" />
+      </div>
+
+      <nav>
+        <a href="#what">What we do</a>
+        <a href="#how">How it works</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Secure, simple Bitcoin guidance.</h1>
+      <p class="lede">
+        Blue Hawk BTC helps people understand Bitcoin, custody basics, and safe on-ramps — without the hype.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn primary" href="#contact">Book a call</a>
+        <a class="btn secondary" href="#how">See how it works</a>
+      </div>
+
+      <section class="grid" id="what">
+        <div class="card">
+          <h3>Education</h3>
+          <p>Clear, jargon-free guidance on wallets, exchanges, and best practices.</p>
+        </div>
+        <div class="card">
+          <h3>Setup help</h3>
+          <p>Step-by-step support configuring safe custody and backups.</p>
+        </div>
+        <div class="card">
+          <h3>Ongoing support</h3>
+          <p>Check-ins, updates, and help avoiding common mistakes and scams.</p>
+        </div>
+      </section>
+
+      <section class="grid" id="how" style="margin-top: 18px;">
+        <div class="card">
+          <h3>1) Talk</h3>
+          <p>We start with your goals and risk tolerance.</p>
+        </div>
+        <div class="card">
+          <h3>2) Plan</h3>
+          <p>We pick a safe approach and outline your setup.</p>
+        </div>
+        <div class="card">
+          <h3>3) Build</h3>
+          <p>We implement, test, and confirm you’re confident.</p>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top: 48px;">
+        <div class="card">
+          <h3>Contact</h3>
+          <p style="margin-top: 8px;">
+            Email: <a href="mailto:hello@bluehawkbtc.com" style="color:#9ec0ff;">hello@bluehawkbtc.com</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Blue Hawk BTC
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>
