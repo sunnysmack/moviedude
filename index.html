@@ -6,78 +6,41 @@
   <title>Blue Hawk BTC</title>
 
   <style>
-    body {
+    /* RESET — remove all browser weirdness */
+    * {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #0b0b0b;
-      color: #ffffff;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #000;
+      color: #fff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     header {
+      width: 100%;
+      padding: 40px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 24px 40px;
     }
 
-    nav a {
-      margin-left: 24px;
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .hero {
-      padding: 120px 40px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .hero h1 {
-      font-size: 64px;
-      line-height: 1.1;
-      margin-bottom: 24px;
-    }
-
-    .hero p {
-      font-size: 20px;
-      max-width: 700px;
-      opacity: 0.9;
-    }
-
-    .logo {
-      height: 48px;
+    /* THIS IS THE IMPORTANT PART */
+    .logo img {
+      width: 320px;       /* ← CHANGE THIS SIZE */
+      max-width: none;    /* ← KILLS ALL HIDDEN CONSTRAINTS */
+      height: auto;
+      display: block;
     }
   </style>
 </head>
 
 <body>
-
   <header>
-    <!-- FIXED LOGO PATH -->
-    <img
-src="./assets/bluehawklogo.png"
-
-      alt="Blue Hawk"
-      class="logo"
-    />
-
-    <nav>
-      <a href="#about">About</a>
-      <a href="#solutions">Solutions</a>
-      <a href="#contact">Contact</a>
-      <a href="mailto:info@bluehawkbtc.com">Book a Call</a>
-    </nav>
+    <div class="logo">
+      <img src="assets/logo.png" alt="Blue Hawk BTC Logo" />
+    </div>
   </header>
-
-  <main class="hero">
-    <h1>We Turn Wasted<br>Gas Into Revenue.</h1>
-
-    <p>
-      Blue Hawk deploys on-site infrastructure that converts stranded or flared
-      natural gas into usable economic output — quietly, securely, and at scale.
-    </p>
-  </main>
-
 </body>
 </html>
