@@ -89,8 +89,8 @@
     /* ===== Hero (FULL-BLEED flare background like comp) ===== */
     .hero{
       position: relative;
-      min-height: 92vh;
-      padding: 140px 0 15px;
+      min-height: 92vh;                 /* keep tall hero feel (Option A) */
+      padding: 140px 0 15px;            /* keep your tighter bottom padding */
       overflow: hidden;
       background:
         radial-gradient(1000px 600px at 78% 35%, rgba(255,150,0,.24), rgba(0,0,0,0) 55%),
@@ -180,6 +180,12 @@
       padding: 52px 0;
       position: relative;
     }
+
+    /* ✅ Option A "tight seam" override: only reduce TOP padding of What We Do */
+    #what.section{
+      padding-top: 32px; /* was effectively 52px via .section */
+    }
+
     .section.darkFade{
       background:
         radial-gradient(900px 700px at 70% 40%, rgba(60,120,255,.08), rgba(0,0,0,0) 60%),
@@ -358,6 +364,9 @@
       .hero{ padding: 120px 0 70px; }
       .steps{ grid-template-columns: 1fr; }
       .talk h2{ font-size: 40px; }
+
+      /* keep the tight seam on mobile too */
+      #what.section{ padding-top: 26px; }
     }
   </style>
 </head>
