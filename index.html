@@ -387,14 +387,14 @@
       color: rgba(255,255,255,.62);
     }
 
-    /* ✅ Logo above “Let’s Talk” — width matches text, nudged smaller */
+    /* ✅ Logo above “Let’s Talk” — width matches text, smaller + fade-in */
     .letsTalkBlock{
       display: inline-block; /* shrink-wrap to text width */
       text-align: center;
     }
     .letsTalkLogo{
       display:block;
-      width: 90%;            /* slightly narrower than the text width */
+      width: 70%;            /* ✅ smaller than before (was 90%) */
       max-width: 100%;
       margin: 0 auto 14px;
       opacity: 0;
@@ -584,10 +584,9 @@
   <section id="contact" class="talk section darkFade">
     <div class="wrap">
 
-      <!-- ✅ Logo above “Let’s Talk.” -->
       <div class="letsTalkBlock">
         <img
-          src="assets/blue-hawk-logo-400w.png"
+          src="assets/blue-hawk-logo-transparent-orange-400w.png"
           alt="Blue Hawk"
           class="letsTalkLogo"
         />
